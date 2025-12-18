@@ -7,14 +7,26 @@ const { AccessToken } = require("livekit-server-sdk");
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server);
+const io = new Server(server, {
+  cors: {
+    origin: "*"
+  }
+});
 
-const { LIVEKIT_URL, LIVEKIT_API_KEY, LIVEKIT_API_SECRET, PORT = 3000 } = process.env;
+const {
+  LIVEKIT_URL,
+  LIVEKIT_API_KEY,
+  LIVEKIT_API_SECRET,
+  PORT = 3000
+} = process.env;
 
 app.use(express.static(path.join(__dirname, "public")));
-app.get("/", (_, res) => res.sendFile(path.join(__dirname, "public/index.html")));
 
-const rooms = {}; // roomId -> hostSocketId
+app.get("*", (_, res) =>
+  res.sendFile(path.join(__dirname, "public/index.html"))
+);
+
+const rooms = {}; // roomId -> host socket id
 
 io.on("connection", socket => {
 
@@ -60,6 +72,6 @@ io.on("connection", socket => {
   }
 });
 
-server.listen(PORT, () =>
-  console.log(`✅ Server running on http://localhost:${PORT}`)
-);
+server.listen(PORT, "0.0.0.0", () => {
+  console.log(`✅ Server running on port ${PORT}`);
+});
