@@ -1,0 +1,57 @@
+# =========================
+# Node.js
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =========================
+# Environment variables
+# =========================
+.env
+
+# =========================
+# Build / runtime files
+# =========================
+dist/
+build/
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Editor / IDE
+# =========================
+.vscode/
+.idea/
+*.swp
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+
+# =========================
+# Temporary / cache
+# =========================
+.cache/
+.tmp/
+
+# =========================
+# Media / recordings
+# =========================
+*.webm
+*.mp4
+recordings/
+
+# =========================
+# Optional: lock files (choose ONE)
+# =========================
+# If using npm (recommended) KEEP package-lock.json
+# If using yarn, ignore yarn.lock
+# yarn.lock
